@@ -11,18 +11,12 @@ RUN apt-get update \
         gpg-agent \
         curl \
         software-properties-common \
-        autoconf \
-        build-essential \
-        git \
-        sqlite3 \
         tzdata \
-        zlib1g-dev \
  && apt-get autoremove -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN \
-    curl -sL https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash - \
  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
  && apt-get update \
